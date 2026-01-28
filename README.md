@@ -1,73 +1,134 @@
-# Welcome to your Lovable project
+# Market Insights Engine
 
-## Project info
+A forecast + evidence engine that helps users compare market-implied probability with model-implied probability for prediction markets.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Project Overview
 
-## How can I edit this code?
+This platform provides powerful insights by comparing market-implied probabilities from prediction markets with our proprietary ML models. It focuses on 10-20 active prediction markets within specific verticals (e.g., US politics or macroeconomics).
 
-There are several ways of editing your application.
+### Key Features
 
-**Use Lovable**
+- Compare market-implied vs model-implied probabilities
+- View evidence supporting forecasts
+- Track probability trends over time
+- Analyze market mispricing opportunities
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+/
+├── src/                # Frontend React application
+│   ├── components/     # UI components
+│   ├── pages/          # Page components
+│   ├── data/           # Mock data
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions
+│   └── types/          # TypeScript type definitions
+│
+└── backend/            # ML and data processing backend
+    ├── api/            # API endpoints
+    │   ├── controllers/  # Request handlers
+    │   └── routes/       # API route definitions
+    ├── models/         # ML model definitions
+    │   ├── probability/  # Probability models
+    │   ├── forecast/     # Forecasting models
+    │   ├── sentiment/    # Sentiment analysis models
+    │   └── comparison/   # Market vs. model comparison
+    ├── services/       # Business logic services
+    ├── utils/          # Utility functions
+    └── data/           # Data processing
+        ├── sources/      # Data source adapters
+        ├── processors/   # Data processing pipelines
+        └── storage/      # Data storage solutions
 ```
 
-**Edit a file directly in GitHub**
+## Technologies Used
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
+### Frontend
 - Vite
 - TypeScript
 - React
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+### Backend
+- Node.js with Express
+- TensorFlow.js for ML models
+- Natural language processing libraries
+- Mathematical utilities for probability analysis
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Getting Started
 
-## Can I connect a custom domain to my Lovable project?
+### Prerequisites
 
-Yes, you can!
+- Node.js (v16 or higher)
+- npm or yarn
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Installation
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd market-insights-engine
+```
+
+2. Install frontend dependencies
+```bash
+npm install
+```
+
+3. Install backend dependencies
+```bash
+cd backend
+npm install
+cd ..
+```
+
+### Running the Application
+
+#### Development Mode
+
+1. Start the frontend development server
+```bash
+npm run dev
+```
+
+2. Start the backend server
+```bash
+cd backend
+npm run dev
+```
+
+#### Production Build
+
+1. Build the frontend
+```bash
+npm run build
+```
+
+2. Build the backend
+```bash
+cd backend
+npm run build
+```
+
+## ML Architecture
+
+Our ML architecture consists of several specialized models:
+
+1. **Time Series Forecasting Models** - Predict future probabilities based on historical data
+2. **Sentiment Analysis Models** - Analyze news and social media for market-relevant sentiment
+3. **Market-Model Comparison** - Identify discrepancies between market prices and model forecasts
+
+Each model is designed to work independently and in conjunction with others to provide comprehensive insights.
+
+## Future Development
+
+- Integration with live prediction market APIs
+- Enhanced ML models with reinforcement learning
+- User customization of model parameters
+- Mobile application
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

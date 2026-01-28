@@ -1,0 +1,26 @@
+{
+  "name": "market-insights-engine-backend",
+  "version": "0.1.0",
+  "description": "Backend ML service for market insights engine",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2",
+    "mongoose": "^8.0.1",
+    "@tensorflow/tfjs-node": "^4.14.0",
+    "natural": "^6.8.0",
+    "ml-matrix": "^6.10.4",
+    "mathjs": "^12.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0"
+  }
+}
