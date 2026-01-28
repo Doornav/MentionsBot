@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Terminal-style design system for Forecast Engine
+   Bloomberg Terminal inspired: dark, data-dense, professional
+   All colors MUST be HSL
+*/
+
+@layer base {
+  :root {
+    /* Base colors - Light mode (fallback) */
+    --background: 220 20% 97%;
+    --foreground: 220 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 10%;
+
+    --primary: 220 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 90%;
+    --secondary-foreground: 220 30% 20%;
+
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 220 15% 92%;
+    --accent-foreground: 220 30% 15%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 70% 50%;
+
+    --radius: 0.375rem;
+
+    /* Semantic colors */
+    --bullish: 142 70% 45%;
+    --bullish-foreground: 142 70% 95%;
+    --bearish: 0 70% 55%;
+    --bearish-foreground: 0 70% 95%;
+    --neutral: 45 90% 50%;
+    --neutral-foreground: 45 90% 10%;
+
+    /* Strength indicators */
+    --strength-weak: 220 15% 60%;
+    --strength-medium: 220 60% 55%;
+    --strength-strong: 220 80% 50%;
+
+    /* Edge indicators */
+    --edge-positive: 142 70% 45%;
+    --edge-negative: 0 70% 55%;
+    --edge-neutral: 220 15% 50%;
+
+    /* Sidebar */
+    --sidebar-background: 220 20% 96%;
+    --sidebar-foreground: 220 20% 25%;
+    --sidebar-primary: 220 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 90%;
+    --sidebar-accent-foreground: 220 30% 15%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 220 70% 50%;
+  }
+
+  .dark {
+    /* Terminal dark theme - Bloomberg inspired */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 35 100% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 217 33% 14%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 217 33% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 96%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 35 100% 50%;
+
+    /* Semantic colors - Terminal style */
+    --bullish: 142 76% 42%;
+    --bullish-foreground: 142 76% 95%;
+    --bearish: 0 84% 60%;
+    --bearish-foreground: 0 84% 95%;
+    --neutral: 45 93% 58%;
+    --neutral-foreground: 45 93% 10%;
+
+    /* Strength indicators */
+    --strength-weak: 215 20% 45%;
+    --strength-medium: 35 80% 55%;
+    --strength-strong: 35 100% 50%;
+
+    /* Edge indicators */
+    --edge-positive: 142 76% 42%;
+    --edge-negative: 0 84% 60%;
+    --edge-neutral: 215 20% 50%;
+
+    /* Sidebar - Terminal style */
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 35 100% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 217 33% 12%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 15%;
+    --sidebar-ring: 35 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Terminal-style monospace for data */
+  .font-mono {
+    font-feature-settings: "tnum";
+  }
+}
+
+@layer utilities {
+  /* Probability color utilities */
+  .text-bullish {
+    color: hsl(var(--bullish));
+  }
+  .text-bearish {
+    color: hsl(var(--bearish));
+  }
+  .text-neutral-signal {
+    color: hsl(var(--neutral));
+  }
+  
+  .bg-bullish {
+    background-color: hsl(var(--bullish));
+  }
+  .bg-bearish {
+    background-color: hsl(var(--bearish));
+  }
+  .bg-neutral-signal {
+    background-color: hsl(var(--neutral));
+  }
+
+  /* Edge indicator utilities */
+  .text-edge-positive {
+    color: hsl(var(--edge-positive));
+  }
+  .text-edge-negative {
+    color: hsl(var(--edge-negative));
+  }
+  .text-edge-neutral {
+    color: hsl(var(--edge-neutral));
+  }
+
+  /* Strength utilities */
+  .text-strength-weak {
+    color: hsl(var(--strength-weak));
+  }
+  .text-strength-medium {
+    color: hsl(var(--strength-medium));
+  }
+  .text-strength-strong {
+    color: hsl(var(--strength-strong));
+  }
+
+  /* Terminal glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  .glow-bullish {
+    box-shadow: 0 0 15px hsl(var(--bullish) / 0.4);
+  }
+  .glow-bearish {
+    box-shadow: 0 0 15px hsl(var(--bearish) / 0.4);
+  }
+
+  /* Data table styling */
+  .data-row {
+    @apply border-b border-border/50 transition-colors hover:bg-accent/50;
+  }
+
+  /* Terminal cursor effect */
+  .terminal-cursor::after {
+    content: "▋";
+    animation: blink 1s step-end infinite;
+    @apply text-primary ml-1;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+}
