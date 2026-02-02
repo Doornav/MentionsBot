@@ -25,21 +25,16 @@ This platform provides powerful insights by comparing market-implied probabiliti
 │   ├── lib/            # Utility functions
 │   └── types/          # TypeScript type definitions
 │
-└── backend/            # ML and data processing backend
-    ├── api/            # API endpoints
-    │   ├── controllers/  # Request handlers
-    │   └── routes/       # API route definitions
-    ├── models/         # ML model definitions
-    │   ├── probability/  # Probability models
-    │   ├── forecast/     # Forecasting models
-    │   ├── sentiment/    # Sentiment analysis models
-    │   └── comparison/   # Market vs. model comparison
-    ├── services/       # Business logic services
-    ├── utils/          # Utility functions
-    └── data/           # Data processing
-        ├── sources/      # Data source adapters
-        ├── processors/   # Data processing pipelines
-        └── storage/      # Data storage solutions
+├── ml/                 # Python-based ML models
+│   ├── api/            # FastAPI service
+│   ├── models/         # ML model implementations
+│   │   ├── forecast/     # Time series forecasting models
+│   │   ├── sentiment/    # Sentiment analysis models
+│   │   └── comparison/   # Market vs. model comparison logic
+│   ├── utils/          # ML utility functions
+│   └── data/           # Data processing pipeline
+│
+└── backend/            # Node.js API service (deprecated)
 ```
 
 ## Technologies Used
@@ -51,17 +46,20 @@ This platform provides powerful insights by comparing market-implied probabiliti
 - shadcn-ui
 - Tailwind CSS
 
-### Backend
-- Node.js with Express
-- TensorFlow.js for ML models
-- Natural language processing libraries
-- Mathematical utilities for probability analysis
+### ML Backend
+- Python 3.9+
+- PyTorch for ML models
+- Transformers for NLP
+- FastAPI for API endpoints
+- Pandas for data manipulation
+- NumPy for numerical operations
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v16 or higher) for frontend
+- Python 3.9+ for ML service
 - npm or yarn
 
 ### Installation
@@ -77,10 +75,10 @@ cd market-insights-engine
 npm install
 ```
 
-3. Install backend dependencies
+3. Install ML dependencies
 ```bash
-cd backend
-npm install
+cd ml
+pip install -r requirements.txt
 cd ..
 ```
 
@@ -93,10 +91,10 @@ cd ..
 npm run dev
 ```
 
-2. Start the backend server
+2. Start the ML service
 ```bash
-cd backend
-npm run dev
+cd ml
+python run_ml_service.py --debug
 ```
 
 #### Production Build
@@ -106,21 +104,38 @@ npm run dev
 npm run build
 ```
 
-2. Build the backend
+2. Run the ML service in production mode
 ```bash
-cd backend
-npm run build
+cd ml
+python run_ml_service.py
 ```
 
 ## ML Architecture
 
-Our ML architecture consists of several specialized models:
+Our ML architecture consists of several specialized PyTorch-based models:
 
-1. **Time Series Forecasting Models** - Predict future probabilities based on historical data
-2. **Sentiment Analysis Models** - Analyze news and social media for market-relevant sentiment
-3. **Market-Model Comparison** - Identify discrepancies between market prices and model forecasts
+1. **Time Series Forecasting Models** - LSTM neural networks to predict future probabilities based on historical data
+2. **Sentiment Analysis Models** - Transformer-based models to analyze news and social media for market-relevant sentiment
+3. **Market-Model Comparison** - Probabilistic analysis to identify discrepancies between market prices and model forecasts
 
-Each model is designed to work independently and in conjunction with others to provide comprehensive insights.
+### Why PyTorch?
+
+We chose PyTorch for our ML implementation for several reasons:
+
+1. **Advanced ML Capabilities**: PyTorch provides state-of-the-art deep learning capabilities for time series forecasting and NLP
+2. **Research-Friendly**: Easier experimentation with model architectures and hyperparameters
+3. **Production-Ready**: Efficient model deployment with TorchScript and ONNX integration
+4. **Extensive Ecosystem**: Access to pre-trained models like BERT and GPT for advanced NLP
+5. **Strong Community Support**: Well-maintained libraries and active development
+
+## API Endpoints
+
+Our ML service provides several REST API endpoints:
+
+- **POST /sentiment/analyze** - Analyze text for sentiment and relevance
+- **POST /forecast/predict** - Generate time series forecasts
+- **POST /comparison/analyze** - Compare market and model probabilities
+- **GET /health** - Check ML service health
 
 ## Future Development
 
@@ -128,7 +143,4 @@ Each model is designed to work independently and in conjunction with others to p
 - Enhanced ML models with reinforcement learning
 - User customization of model parameters
 - Mobile application
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+- Model explainability features
